@@ -7,6 +7,9 @@ import jm.task.core.jdbc.util.Util;
 
 public class Main {
     public static void main(String[] args) {
+        Util.getUtil().addLogInfo("Singleton");
+        Util.getUtil().showLogFile();
+
         // реализуйте алгоритм здесь
         User[] users ={new User("Daniil", "Vaskin", (byte) 99),
                 new User("Kolya","Ivanov",(byte) 15),

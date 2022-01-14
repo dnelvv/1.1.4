@@ -9,12 +9,37 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
+
+    private static Util util;
+    private static String logFile = "this is log file \n\n";
+
+    public static synchronized Util getUtil() {
+        if (util == null) {
+           util = new Util();
+        }
+        return util;
+    }
+
+    private Util() {
+
+    }
+
+    public void addLogInfo(String logInfo) {
+        logFile += logInfo + "\n";
+    }
+
+    public void showLogFile() {
+        System.out.println(logFile);
+    }
+
     // реализуйте настройку соеденения с БД
     private static String dbURL = "jdbc:mysql://localhost:3306/user";
     private static String dbUsername = "root";
     private static String dbPassword = "root";
     private static SessionFactory sessionFactory;
     private static Connection connection =null;
+
+
 
 
     public static Connection getConnection() {
